@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Actualizar Post
+{% endblock title %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<section>
+    <div class="container">
+        <div class="header mb-4 mt-4">
+            <h1 class="h3">Actualizar Blog</h1>
+        </div>
+        <div class="body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="url" class="form-label">URL</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="ejemplo-title" value="{{post.url}}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Título del blog" value="{{post.title}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="info" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="info" name="info" rows="3"
+                        placeholder="Contenido del blog">{{post.info}}</textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="content" class="form-label">Contenido</label>
+                    {{ ckeditor.create(value=post.content) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
